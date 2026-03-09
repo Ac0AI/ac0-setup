@@ -467,15 +467,47 @@ Change the background to dark blue instead of black.</pre>
       A <code>.vercel.app</code> URL works, but you probably want <code>yourname.com</code>. That's where <a href="https://porkbun.com">Porkbun</a> comes in - they sell domain names without the usual upsell circus.
     </p>
 
+    <p><strong>Buy your domain:</strong></p>
     <ol>
-      <li>Search for your domain on <a href="https://porkbun.com">porkbun.com</a> and buy it</li>
-      <li>In Vercel, go to your project → Settings → Domains</li>
-      <li>Add your domain (e.g. <code>yourname.com</code>)</li>
-      <li>Vercel tells you what DNS records to add</li>
-      <li>Go to Porkbun → DNS → add the records Vercel gave you</li>
+      <li>Search for your domain on <a href="https://porkbun.com">porkbun.com</a> and buy it (usually $10-15/year for a .com)</li>
+      <li>You now own the name. But it doesn't point anywhere yet.</li>
     </ol>
 
-    <p>Give it a few minutes to propagate. Then your site is live at your own domain, with free SSL (that little padlock in the browser).</p>
+    <p><strong>Connect it to Vercel:</strong></p>
+    <ol>
+      <li>In Vercel, go to your project → Settings → Domains</li>
+      <li>Type your domain (e.g. <code>yourname.com</code>) and click Add</li>
+      <li>Vercel shows you DNS records to add - usually something like this:</li>
+    </ol>
+
+    <div class="aside">
+      <strong>What's DNS?</strong> Think of it as the internet's phone book. Your domain name is the contact name, and DNS records tell the internet which server to call when someone types your domain. You're basically saying "when someone visits yourname.com, send them to Vercel's servers."
+    </div>
+
+    <p>Vercel will typically ask you to add one of these:</p>
+
+<pre><span class="comment"># Option A: A record (points to an IP address)</span>
+<span class="cmd">Type: A</span>
+<span class="cmd">Host: @ (means "the root domain")</span>
+<span class="cmd">Value: 76.76.21.21</span>
+
+<span class="comment"># Option B: CNAME record (points to another domain)</span>
+<span class="cmd">Type: CNAME</span>
+<span class="cmd">Host: www</span>
+<span class="cmd">Value: cname.vercel-dns.com</span></pre>
+
+    <p><strong>Add them in Porkbun:</strong></p>
+    <ol>
+      <li>Go to Porkbun → your domain → DNS Records</li>
+      <li>Add the records exactly as Vercel showed you</li>
+      <li>Save and wait 5-10 minutes</li>
+    </ol>
+
+    <p>That's it. Go back to Vercel - it checks automatically and shows a green checkmark when it's connected. Your site is now live at your own domain, with free SSL (the padlock in the browser).</p>
+
+    <div class="aside">
+      <strong>Don't panic if it doesn't work instantly.</strong> DNS changes can take up to 48 hours to spread across the internet, but usually it's 5-15 minutes. If it's still not working after an hour, double-check that you copied the records exactly - a missing dot or wrong type is the most common mistake.
+    </div>
 
     <!-- 8. SECURITY -->
     <h2><span class="step-num">8</span> Keep your secrets safe</h2>

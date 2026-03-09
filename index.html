@@ -41,6 +41,32 @@
       font-size: 1.2rem;
     }
 
+    .setup-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border: 1px solid #eee;
+      border-radius: 999px;
+      text-decoration: none;
+      color: #111;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+      transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+    }
+
+    .setup-link:hover {
+      border-color: #ccc;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+      transform: translateY(-1px);
+    }
+
+    .setup-link span {
+      color: #888;
+      font-weight: 500;
+    }
+
     .section-label {
       font-size: 0.65rem;
       font-weight: 600;
@@ -220,6 +246,7 @@
 <body>
   <div class="container">
     <header>
+      <a href="https://setup.ac0.ai" class="setup-link">🔗 setup.ac0.ai <span>- share this page</span></a>
       <h1>The Setup.</h1>
       <p class="subtitle">Tools worth installing. Nothing else.</p>
     </header>

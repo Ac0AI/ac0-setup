@@ -520,13 +520,27 @@ Change the background to dark blue instead of black.</pre>
       Many services give you <strong>API keys</strong> - secret passwords that let your code talk to their services. If someone gets your key, they can use it and <em>you</em> get the bill. People have lost thousands of dollars from accidentally leaking keys.
     </p>
 
-    <p><strong>The rule is simple:</strong> Never put API keys in your code. Put them in a file called <code>.env.local</code>:</p>
+    <p><strong>The rule is simple:</strong> Never put API keys directly in your code. Put them in a separate file called <code>.env.local</code> that stays on your machine and never gets uploaded.</p>
+
+    <p><strong>How to create the file:</strong> The easiest way? Tell Claude Code to do it. Just say:</p>
+
+<pre><span class="highlight">You:</span> Create a file called .env.local with these keys:
+OPENAI_API_KEY=sk-abc123...
+STRIPE_SECRET_KEY=sk_live_...</pre>
+
+    <p>Claude Code creates the file for you. Done. You can also do it manually in the terminal:</p>
+
+<pre><span class="comment"># Create .env.local in your project folder</span>
+<span class="cmd">touch .env.local</span>
+<span class="cmd">open .env.local</span></pre>
+
+    <p>This opens it in a text editor where you paste your keys, one per line:</p>
 
 <pre><span class="comment"># .env.local — this file stays on YOUR machine</span>
 <span class="cmd">OPENAI_API_KEY=sk-abc123...</span>
 <span class="cmd">STRIPE_SECRET_KEY=sk_live_...</span></pre>
 
-    <p>Then make sure Git ignores it by adding it to <code>.gitignore</code>:</p>
+    <p>Now you need to tell Git to <em>ignore</em> this file so it never gets uploaded. Same deal - tell Claude Code "add .env.local to .gitignore" or create it yourself:</p>
 
 <pre><span class="comment"># .gitignore — tells Git which files to NOT upload</span>
 <span class="cmd">.env.local</span>

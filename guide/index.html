@@ -24,15 +24,65 @@
       padding: 48px 24px 100px;
     }
 
-    .back {
+    .back-wrap {
+      position: relative;
       display: inline-block;
-      color: #999;
+      border-radius: 10px;
+      padding: 2px;
+      margin-bottom: 32px;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .back-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -80%;
+      background: conic-gradient(
+        from 0deg,
+        transparent 0%,
+        transparent 30%,
+        #fbbf24 34%,
+        #fb923c 38%,
+        #fff 40%,
+        #fbbf24 42%,
+        transparent 46%,
+        transparent 65%,
+        #f59e0b88 68%,
+        transparent 72%,
+        transparent 100%
+      );
+      animation: spark-spin 3s linear infinite;
+      z-index: -2;
+    }
+
+    .back-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 2px;
+      background: #fff;
+      border-radius: 8px;
+      z-index: -1;
+    }
+
+    @keyframes spark-spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .back {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #555;
       text-decoration: none;
       font-size: 0.82rem;
-      margin-bottom: 32px;
+      font-weight: 500;
+      padding: 8px 16px;
       transition: color 0.15s;
     }
-    .back:hover { color: #555; }
+    .back:hover { color: #111; }
+    .back .back-arrow { transition: transform 0.2s; }
+    .back-wrap:hover .back-arrow { transform: translateX(-3px); }
 
     h1 {
       font-family: 'Caveat', cursive;
@@ -230,6 +280,19 @@
       margin-top: 4px;
     }
 
+    .discord-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #7289da;
+      font-size: 0.78rem;
+      font-weight: 500;
+      text-decoration: none;
+      margin-top: 12px;
+      transition: color 0.15s;
+    }
+    .discord-link:hover { color: #5b6eae; text-decoration: none; }
+
     @media (max-width: 600px) {
       .container { padding: 32px 16px 80px; }
       h1 { font-size: 2rem; }
@@ -241,7 +304,9 @@
 </head>
 <body>
   <div class="container">
-    <a href="/." class="back">← Back to The Setup</a>
+    <div class="back-wrap">
+      <a href="/" class="back"><span class="back-arrow">←</span> Back to The Setup</a>
+    </div>
 
     <h1>Getting Started with Claude Code</h1>
     <p class="intro">
@@ -484,7 +549,7 @@ Change the background to dark blue instead of black.</pre>
     </p>
 
     <p style="margin-top: 24px;">
-      <a href="/." class="tool-link">← The full tool list</a>
+      <a href="/" class="tool-link">← The full tool list</a>
       <a href="https://ac0.ai" class="tool-link">☀️ AC0 AI</a>
       <a href="https://ac0.ai/en/field-notes" class="tool-link">📓 Field Notes</a>
     </p>
@@ -492,6 +557,10 @@ Change the background to dark blue instead of black.</pre>
     <footer>
       <a href="https://ac0.ai">ac0.ai</a>
       <div class="footer-line">Built in Málaga ☀️</div>
+      <a href="https://discord.com/invite/clawd" class="discord-link">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+        Need help? Join our Discord
+      </a>
     </footer>
   </div>
 </body>

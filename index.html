@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Setup — AC0 AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #fff;
+      color: #111;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 80px 24px 120px;
+    }
+
+    h1 {
+      font-family: 'Caveat', cursive;
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: #000;
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
+    }
+
+    .subtitle {
+      font-family: 'Caveat', cursive;
+      color: #666;
+      font-size: 1.4rem;
+      margin-bottom: 56px;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #999;
+      margin-top: 52px;
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .tool {
+      border: 1px solid #e8e8e8;
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 12px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+      position: relative;
+      color: inherit;
+    }
+
+    .tool:hover {
+      border-color: #ccc;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+
+    .tool-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .tool-icon {
+      font-size: 1.4rem;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f5f5f5;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+    .tool-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #000;
+    }
+
+    .tool-tag {
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-left: auto;
+    }
+
+    .tool-tag.free { background: #ecfdf5; color: #16a34a; }
+    .tool-tag.paid { background: #fef9ec; color: #b45309; }
+    .tool-tag.freemium { background: #eff6ff; color: #2563eb; }
+
+    .tool-desc {
+      color: #555;
+      font-size: 0.92rem;
+      line-height: 1.65;
+    }
+
+    .tool-desc strong {
+      color: #222;
+      font-weight: 500;
+    }
+
+    .tool-extras {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tool-extra {
+      font-size: 0.72rem;
+      color: #888;
+      background: #f5f5f5;
+      padding: 3px 9px;
+      border-radius: 4px;
+    }
+
+    .tool-install {
+      margin-top: 12px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.8rem;
+      color: #16a34a;
+      background: #f0fdf4;
+      padding: 7px 12px;
+      border-radius: 6px;
+      display: inline-block;
+    }
+
+    .sub-tools {
+      margin-top: 10px;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .sub-tools li {
+      color: #666;
+      font-size: 0.88rem;
+      padding: 3px 0 3px 16px;
+      position: relative;
+    }
+
+    .sub-tools li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 12px;
+      width: 6px;
+      height: 1px;
+      background: #ccc;
+    }
+
+    .sub-tools li strong {
+      color: #222;
+      font-weight: 500;
+    }
+
+    .note {
+      font-size: 0.82rem;
+      color: #999;
+      font-style: italic;
+      margin-top: 6px;
+    }
+
+    .arrow {
+      position: absolute;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #ddd;
+      font-size: 1.1rem;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .tool:hover .arrow {
+      color: #999;
+      transform: translateY(-50%) translateX(3px);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 80px;
+      padding-top: 24px;
+      border-top: 1px solid #eee;
+    }
+
+    footer a {
+      color: #999;
+      text-decoration: none;
+      font-size: 0.82rem;
+    }
+
+    footer a:hover {
+      color: #555;
+    }
+
+    footer .footer-line {
+      font-family: 'Caveat', cursive;
+      font-size: 1rem;
+      color: #bbb;
+      margin-top: 6px;
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 48px 16px 80px; }
+      h1 { font-size: 2.4rem; }
+      .tool { padding: 18px 20px; }
+      .arrow { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>The Setup.</h1>
+    <p class="subtitle">Tools worth installing. Nothing else.</p>
+
+    <!-- FOUNDATION -->
+    <div class="section-label">Foundation</div>
+
+    <a href="https://claude.ai" target="_blank" class="tool">
+      <span class="arrow">→</span>
+      <div class="tool-header">
+        <div class="tool-icon">🧠</div>
+        <span class="tool-name">Claude</span>
+        <span class="tool-tag freemium">Freemium</span>
+      </div>
+      <div class="tool-desc">
+        Anthropic's AI assistant. The thinking engine behind everything here. Start with the web app, then expand into the ecosystem:
+      </div>
+      <ul class="sub-tools">
+        <li><strong>Claude Code</strong> — Agentic coding in your terminal. Edits files, runs commands, builds features.</li>
+        <li><strong>Claude Chat</strong> — Desktop app with native shortcuts and quick access.</li>
+        <li><strong>Claude for CoWork</strong> — Your business, automated.</li>
+      </ul>
+    </a>
+
+    <a href="https://obsidian.md/" target="_blank" class="tool">
+      <span class="arrow">→</span>
+      <div class="tool-header">
+        <div class="tool-icon">💎</div>
+        <span class="tool-name">Obsidian</span>
+        <span class="tool-tag free">Free</span>
+      </div>
+      <div class="tool-desc">
+        Markdown note-taking with powerful linking, graph view, and AI plugins. Your second brain, stored as plain files you actually own.
+      </div>
+      <div class="tool-extras">
+        <span class="tool-extra">Local-first</span>
+        <span class="tool-extra">Plugin ecosystem</span>
+        <span class="tool-extra">Graph view</span>
+      </div>
+    </a>
+
+    <!-- PRODUCTIVITY -->
+    <div class="section-label">Productivity</div>
+
+    <a href="https://superhuman.com/refer/qurqbkao" target="_blank" class="tool">
+      <span class="arrow">→</span>
+      <div class="tool-header">
+        <div class="tool-icon">⚡</div>
+        <span class="tool-name">Superhuman</span>
+        <span class="tool-tag paid">Free month</span>
+      </div>
+      <div class="tool-desc">
+        AI-powered email built for speed. Keyboard-driven, split inbox, follow-up reminders, and read status tracking. For people who refuse to be slow at email.
+      </div>
+      <div class="tool-extras">
+        <span class="tool-extra">AI triage</span>
+        <span class="tool-extra">Keyboard-first</span>
+        <span class="tool-extra">Read receipts</span>
+      </div>
+    </a>
+
+    <a href="https://incredible.one/" target="_blank" class="tool">
+      <span class="arrow">→</span>
+      <div class="tool-header">
+        <div class="tool-icon">🎙</div>
+        <span class="tool-name">Incredible</span>
+        <span class="tool-tag paid">Invite only</span>
+      </div>
+      <div class="tool-desc">
+        Always-on AI assistant inside every app. Press Fn, speak, and it executes tasks directly in your current app. Live dictation, voice-controlled actions, context-aware.
+      </div>
+      <p class="note">Need an invite code? Ask David.</p>
+    </a>
+
+    <a href="https://workspace.google.com/" target="_blank" class="tool">
+      <span class="arrow">→</span>
+      <div class="tool-header">
+        <div class="tool-icon">🔷</div>
+        <span class="tool-name">Google Workspace</span>
+        <span class="tool-tag paid">Paid</span>
+      </div>
+      <div class="tool-desc">
+        Mail, calendar, drive, docs - the boring stuff that has to work. The bonus: Gemini built in, plus Anthropic integration options if you want them.
+      </div>
+      <div class="tool-extras">
+        <span class="tool-extra">Gemini included</span>
+        <span class="tool-extra">Custom domain email</span>
+        <span class="tool-extra">30GB+ storage</span>
+      </div>
+    </a>
+
+    <!-- INFRASTRUCTURE -->
+    <div class="section-label">Infrastructure</div>
+
+    <a href="https://vercel.com" target="_blank" class="tool">
+      <span class="arrow">→</span>
+      <div class="tool-header">
+        <div class="tool-icon">▲</div>
+        <span class="tool-name">Vercel</span>
+        <span class="tool-tag freemium">Freemium</span>
+      </div>
+      <div class="tool-desc">
+        Push code, get a live site. Free hosting for static sites and serverless functions. Great for deploying projects without touching a server.
+      </div>
+      <div class="tool-extras">
+        <span class="tool-extra">Git auto-deploy</span>
+        <span class="tool-extra">Edge functions</span>
+        <span class="tool-extra">Free SSL</span>
+      </div>
+    </a>
+
+    <a href="https://supabase.com" target="_blank" class="tool">
+      <span class="arrow">→</span>
+      <div class="tool-header">
+        <div class="tool-icon">⚡</div>
+        <span class="tool-name">Supabase</span>
+        <span class="tool-tag freemium">Freemium</span>
+      </div>
+      <div class="tool-desc">
+        Open-source Firebase alternative. Managed PostgreSQL with real-time subscriptions, auth, and storage. Database that doesn't make you want to quit.
+      </div>
+      <div class="tool-extras">
+        <span class="tool-extra">PostgreSQL</span>
+        <span class="tool-extra">Real-time</span>
+        <span class="tool-extra">Auth built in</span>
+      </div>
+    </a>
+
+    <a href="https://porkbun.com" target="_blank" class="tool">
+      <span class="arrow">→</span>
+      <div class="tool-header">
+        <div class="tool-icon">🐷</div>
+        <span class="tool-name">Porkbun</span>
+        <span class="tool-tag paid">Paid</span>
+      </div>
+      <div class="tool-desc">
+        Clean, affordable domain registrar. Best for .com, .ai, and international TLDs. Free WHOIS privacy, DNS management, and no upsell nonsense.
+      </div>
+      <div class="tool-extras">
+        <span class="tool-extra">Free WHOIS privacy</span>
+        <span class="tool-extra">API access</span>
+        <span class="tool-extra">No upsells</span>
+      </div>
+    </a>
+
+    <!-- DEV TOOLS -->
+    <div class="section-label">Dev Tools</div>
+
+    <a href="https://github.com/tw93/Kaku" target="_blank" class="tool">
+      <span class="arrow">→</span>
+      <div class="tool-header">
+        <div class="tool-icon">▶</div>
+        <span class="tool-name">Kaku Terminal</span>
+        <span class="tool-tag free">Free</span>
+      </div>
+      <div class="tool-desc">
+        Fast, AI-ready terminal for macOS. Built on WezTerm with polished defaults, Starship prompt, z navigation, and Delta diffs. Zero config needed.
+      </div>
+      <div class="tool-install">brew install tw93/tap/kakuku</div>
+    </a>
+
+    <a href="https://goodsnooze.gumroad.com/l/macwhisper" target="_blank" class="tool">
+      <span class="arrow">→</span>
+      <div class="tool-header">
+        <div class="tool-icon">🎧</div>
+        <span class="tool-name">MacWhisper</span>
+        <span class="tool-tag freemium">Freemium</span>
+      </div>
+      <div class="tool-desc">
+        Local speech-to-text that runs entirely on your Mac. No cloud, no subscriptions, 100% private. Supports 100+ languages, exports to SRT, VTT, CSV.
+      </div>
+      <div class="tool-extras">
+        <span class="tool-extra">100% local</span>
+        <span class="tool-extra">100+ languages</span>
+        <span class="tool-extra">SRT / VTT export</span>
+      </div>
+    </a>
+
+    <!-- AC0 -->
+    <div class="section-label">From Us</div>
+
+    <a href="https://ac0.ai" target="_blank" class="tool">
+      <span class="arrow">→</span>
+      <div class="tool-header">
+        <div class="tool-icon">☀️</div>
+        <span class="tool-name">AC0 AI</span>
+        <span class="tool-tag freemium">Consult</span>
+      </div>
+      <div class="tool-desc">
+        That's us. We set up AI and automation that actually makes you money. No need to touch the wiring - that's on us.
+      </div>
+    </a>
+
+    <a href="https://ac0.ai/en/field-notes" target="_blank" class="tool">
+      <span class="arrow">→</span>
+      <div class="tool-header">
+        <div class="tool-icon">📓</div>
+        <span class="tool-name">Field Notes</span>
+        <span class="tool-tag free">Free</span>
+      </div>
+      <div class="tool-desc">
+        What we're learning, building, and thinking about. Real notes from real projects - no fluff, no thought leadership.
+      </div>
+    </a>
+
+    <footer>
+      <a href="https://ac0.ai">ac0.ai</a>
+      <div class="footer-line">Built in Málaga ☀️</div>
+    </footer>
+  </div>
+</body>
+</html>

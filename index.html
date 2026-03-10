@@ -145,13 +145,13 @@
     .grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 8px;
+      gap: 6px;
     }
 
     .tool {
       border: 1px solid #eee;
       border-radius: 10px;
-      padding: 14px 16px;
+      padding: 12px 14px;
       transition: border-color 0.15s, box-shadow 0.15s;
       cursor: pointer;
       text-decoration: none;
@@ -168,33 +168,33 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
 
     .tool-icon {
-      font-size: 1rem;
-      width: 28px;
-      height: 28px;
+      font-size: 0.9rem;
+      width: 24px;
+      height: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
       background: #f7f7f7;
-      border-radius: 6px;
+      border-radius: 5px;
       flex-shrink: 0;
     }
 
     .tool-name {
-      font-size: 0.88rem;
+      font-size: 0.84rem;
       font-weight: 600;
       color: #000;
     }
 
     .tool-tag {
-      font-size: 0.55rem;
+      font-size: 0.5rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      padding: 1px 6px;
+      padding: 1px 5px;
       border-radius: 3px;
       margin-left: auto;
       white-space: nowrap;
@@ -206,71 +206,15 @@
 
     .tool-desc {
       color: #777;
-      font-size: 0.78rem;
-      line-height: 1.5;
+      font-size: 0.74rem;
+      line-height: 1.45;
     }
-
-    .tool-extras {
-      margin-top: 6px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
-    }
-
-    .tool-extra {
-      font-size: 0.62rem;
-      color: #999;
-      background: #f5f5f5;
-      padding: 2px 6px;
-      border-radius: 3px;
-    }
-
-    .tool-install {
-      margin-top: 6px;
-      font-family: 'SF Mono', 'Fira Code', monospace;
-      font-size: 0.68rem;
-      color: #16a34a;
-      background: #f0fdf4;
-      padding: 4px 8px;
-      border-radius: 4px;
-      display: inline-block;
-    }
-
-    .tool.wide { grid-column: 1 / -1; }
-
-    .sub-tools {
-      margin-top: 6px;
-      padding-left: 0;
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px 16px;
-    }
-
-    .sub-tools li {
-      color: #888;
-      font-size: 0.72rem;
-      padding-left: 10px;
-      position: relative;
-    }
-
-    .sub-tools li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 8px;
-      width: 4px;
-      height: 1px;
-      background: #ccc;
-    }
-
-    .sub-tools li strong { color: #333; font-weight: 500; }
 
     .note {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       color: #aaa;
       font-style: italic;
-      margin-top: 4px;
+      margin-top: 2px;
     }
 
     /* ---- FOOTER ---- */
@@ -313,7 +257,6 @@
       .container { padding: 32px 14px 60px; }
       h1 { font-size: 2rem; }
       .grid { grid-template-columns: 1fr; }
-      .tool.wide { grid-column: auto; }
     }
   </style>
 </head>
@@ -345,24 +288,16 @@
           <span class="tool-name">Claude</span>
           <span class="tool-tag freemium">Freemium</span>
         </div>
-        <div class="tool-desc">Anthropic's AI. Chat, code, analyze, write. Claude Code builds software from plain English in your terminal.</div>
-        <ul class="sub-tools">
-          <li><strong>Claude Code</strong> — agentic coding</li>
-          <li><strong>CoWork</strong> — business automation</li>
-        </ul>
+        <div class="tool-desc">AI that codes, writes, and thinks. Claude Code builds software from your terminal.</div>
       </a>
 
       <a href="https://openai.com/index/introducing-codex/" target="_blank" class="tool">
         <div class="tool-header">
           <div class="tool-icon">🤖</div>
           <span class="tool-name">Codex</span>
-          <span class="tool-tag paid">Included in ChatGPT</span>
+          <span class="tool-tag paid">ChatGPT sub</span>
         </div>
-        <div class="tool-desc">OpenAI's coding agent. Similar to Claude Code but runs in the cloud. Included in your ChatGPT Plus/Pro subscription - no extra cost.</div>
-        <div class="tool-extras">
-          <span class="tool-extra">Cloud-based</span>
-          <span class="tool-extra">ChatGPT sub</span>
-        </div>
+        <div class="tool-desc">OpenAI's coding agent. Runs in the cloud. Included in ChatGPT Plus/Pro.</div>
       </a>
 
       <a href="https://obsidian.md/" target="_blank" class="tool">
@@ -371,12 +306,7 @@
           <span class="tool-name">Obsidian</span>
           <span class="tool-tag free">Free</span>
         </div>
-        <div class="tool-desc">A notes app for people who think in connections. Link ideas together, search everything, add AI plugins. Files live on your computer, not someone's cloud.</div>
-        <div class="tool-extras">
-          <span class="tool-extra">Local-first</span>
-          <span class="tool-extra">Plugins</span>
-          <span class="tool-extra">Graph view</span>
-        </div>
+        <div class="tool-desc">Notes that link together. Local-first, plugin-friendly, your files on your machine.</div>
       </a>
 
       <a href="https://workspace.google.com/" target="_blank" class="tool">
@@ -385,12 +315,7 @@
           <span class="tool-name">Google Workspace</span>
           <span class="tool-tag paid">Paid</span>
         </div>
-        <div class="tool-desc">Email, calendar, and file storage under your own domain. Google's AI (Gemini) is baked in, and Antigravity lets you run AI agents on your work.</div>
-        <div class="tool-extras">
-          <span class="tool-extra">Gemini included</span>
-          <span class="tool-extra">Antigravity</span>
-          <span class="tool-extra">Custom email</span>
-        </div>
+        <div class="tool-desc">Email, calendar, storage under your domain. Gemini AI baked in.</div>
       </a>
     </div>
 
@@ -403,11 +328,7 @@
           <span class="tool-name">Superhuman</span>
           <span class="tool-tag paid">Free month</span>
         </div>
-        <div class="tool-desc">Email that doesn't waste your time. AI sorts your inbox, suggests replies, and tells you when people read your messages.</div>
-        <div class="tool-extras">
-          <span class="tool-extra">AI triage</span>
-          <span class="tool-extra">Keyboard-first</span>
-        </div>
+        <div class="tool-desc">Email that doesn't waste your time. AI triage, keyboard-first.</div>
       </a>
 
       <a href="https://incredible.one/" target="_blank" class="tool">
@@ -416,8 +337,7 @@
           <span class="tool-name">Incredible</span>
           <span class="tool-tag paid">Invite only</span>
         </div>
-        <div class="tool-desc">Talk to your computer and it does the thing. Works inside any app - just hold Fn and speak.</div>
-        <p class="note">Need an invite? Ask David.</p>
+        <div class="tool-desc">Talk to your computer and it does the thing. Hold Fn and speak.</div>
       </a>
 
       <a href="https://goodsnooze.gumroad.com/l/macwhisper" target="_blank" class="tool">
@@ -426,11 +346,7 @@
           <span class="tool-name">MacWhisper</span>
           <span class="tool-tag freemium">Freemium</span>
         </div>
-        <div class="tool-desc">Turn any audio into text, right on your Mac. Meetings, podcasts, voice memos. Nothing leaves your machine.</div>
-        <div class="tool-extras">
-          <span class="tool-extra">100% local</span>
-          <span class="tool-extra">SRT export</span>
-        </div>
+        <div class="tool-desc">Audio to text, 100% local. Meetings, podcasts, voice memos.</div>
       </a>
 
       <a href="https://github.com/tw93/Kaku" target="_blank" class="tool">
@@ -439,8 +355,7 @@
           <span class="tool-name">Kaku Terminal</span>
           <span class="tool-tag free">Free</span>
         </div>
-        <div class="tool-desc">A better terminal for your Mac. Looks good out of the box, works great with AI coding tools. Just install and go.</div>
-        <div class="tool-install">brew install tw93/tap/kakuku</div>
+        <div class="tool-desc">A better Mac terminal. Looks good, works great with AI tools.</div>
       </a>
     </div>
 
@@ -453,12 +368,7 @@
           <span class="tool-name">Vercel</span>
           <span class="tool-tag freemium">Freemium</span>
         </div>
-        <div class="tool-desc">The easiest way to put a website online. Connect your code, it deploys automatically. Free for most projects.</div>
-        <div class="tool-extras">
-          <span class="tool-extra">Git deploy</span>
-          <span class="tool-extra">Edge functions</span>
-          <span class="tool-extra">Free SSL</span>
-        </div>
+        <div class="tool-desc">Easiest way to put a website online. Git push, it deploys.</div>
       </a>
 
       <a href="https://supabase.com" target="_blank" class="tool">
@@ -467,12 +377,7 @@
           <span class="tool-name">Supabase</span>
           <span class="tool-tag freemium">Freemium</span>
         </div>
-        <div class="tool-desc">A database you can actually set up yourself. Handles users, logins, file storage, and live data. The backend for when you're building something real.</div>
-        <div class="tool-extras">
-          <span class="tool-extra">PostgreSQL</span>
-          <span class="tool-extra">Real-time</span>
-          <span class="tool-extra">Auth</span>
-        </div>
+        <div class="tool-desc">Database + auth + storage. The backend when you're building something real.</div>
       </a>
 
       <a href="https://porkbun.com" target="_blank" class="tool">
@@ -481,25 +386,7 @@
           <span class="tool-name">Porkbun</span>
           <span class="tool-tag paid">Paid</span>
         </div>
-        <div class="tool-desc">Where you buy domain names without getting tricked into extras. Fair prices, free privacy protection, no nonsense.</div>
-        <div class="tool-extras">
-          <span class="tool-extra">API access</span>
-          <span class="tool-extra">No upsells</span>
-        </div>
-      </a>
-
-      <a href="https://www.remotion.dev/" target="_blank" class="tool">
-        <div class="tool-header">
-          <div class="tool-icon">🎬</div>
-          <span class="tool-name">Remotion</span>
-          <span class="tool-tag freemium">Freemium</span>
-        </div>
-        <div class="tool-desc">Make videos with code. Write React components, render them as MP4s. Perfect for programmatic content - social clips, data visualizations, personalized videos at scale.</div>
-        <div class="tool-extras">
-          <span class="tool-extra">React-based</span>
-          <span class="tool-extra">Programmatic</span>
-          <span class="tool-extra">Server-side render</span>
-        </div>
+        <div class="tool-desc">Domain names without the upsell circus. Fair prices, free privacy.</div>
       </a>
 
       <a href="https://resend.com/" target="_blank" class="tool">
@@ -508,12 +395,16 @@
           <span class="tool-name">Resend</span>
           <span class="tool-tag freemium">Freemium</span>
         </div>
-        <div class="tool-desc">Email API that developers actually like. Send transactional and marketing emails with a clean API. Built by the team behind React Email.</div>
-        <div class="tool-extras">
-          <span class="tool-extra">React Email</span>
-          <span class="tool-extra">REST API</span>
-          <span class="tool-extra">3K free/month</span>
+        <div class="tool-desc">Email API developers actually like. 3K emails/month free.</div>
+      </a>
+
+      <a href="https://www.remotion.dev/" target="_blank" class="tool">
+        <div class="tool-header">
+          <div class="tool-icon">🎬</div>
+          <span class="tool-name">Remotion</span>
+          <span class="tool-tag freemium">Freemium</span>
         </div>
+        <div class="tool-desc">Make videos with code. React components in, MP4s out.</div>
       </a>
     </div>
 
@@ -526,7 +417,7 @@
           <span class="tool-name">AC0 AI</span>
           <span class="tool-tag freemium">Consult</span>
         </div>
-        <div class="tool-desc">That's us. We set up AI and automation so you make more money without learning to code.</div>
+        <div class="tool-desc">That's us. AI and automation so you make more money.</div>
       </a>
 
       <a href="https://ac0.ai/en/field-notes" target="_blank" class="tool">
@@ -535,7 +426,7 @@
           <span class="tool-name">Field Notes</span>
           <span class="tool-tag free">Free</span>
         </div>
-        <div class="tool-desc">Short posts about what we're actually learning. No fluff, no thought leadership - just notes from the field.</div>
+        <div class="tool-desc">What we're actually learning. No fluff, just notes from the field.</div>
       </a>
 
       <a href="https://x.com/ac0hero" target="_blank" class="tool">
@@ -544,7 +435,7 @@
           <span class="tool-name">@ac0hero</span>
           <span class="tool-tag free">Free</span>
         </div>
-        <div class="tool-desc">Follow along. Check who I follow for a curated list of the best AI people on X.</div>
+        <div class="tool-desc">Follow along. Check who I follow for the best AI people on X.</div>
       </a>
     </div>
 

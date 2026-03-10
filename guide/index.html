@@ -589,6 +589,45 @@ STRIPE_SECRET_KEY=sk_live_...</pre>
       <strong>Pro tip:</strong> You can also ask Claude Code to handle the git commands for you. Just say "commit and push this" and it will.
     </div>
 
+    <!-- 10. PERMISSIONS -->
+    <h2><span class="step-num">10</span> Stop pressing Yes all the time</h2>
+
+    <p>
+      If you've used Claude Code for more than 5 minutes, you've noticed: it asks permission for <em>everything</em>. Edit a file? "Allow?" Run a command? "Allow?" After the 20th time you stop reading and just hammer Yes.
+    </p>
+
+    <p>
+      This is by design - Claude Code is being careful with your computer. But there are ways to speed it up without going reckless:
+    </p>
+
+    <p><strong>Option 1: Auto-Accept Mode (recommended)</strong></p>
+    <p>Press <code>Shift+Tab</code> inside Claude Code to toggle auto-accept. It auto-approves file edits and safe commands. You get the speed without blanket permission bypass. Toggle it off when you want control back.</p>
+
+    <p><strong>Option 2: Allowlist specific tools</strong></p>
+    <p>Tell Claude Code which tools to always trust. Create a file at <code>.claude/settings.json</code> in your project:</p>
+
+<pre><span class="comment">// .claude/settings.json</span>
+{
+  "<span class="highlight">allowedTools</span>": [
+    "Edit",
+    "Write",
+    "Bash(git *)",
+    "Bash(npm *)"
+  ]
+}</pre>
+
+    <p>Now Claude can edit files and run git/npm commands without asking, but still asks before anything else. This is what experienced developers do - fast where it's safe, careful where it matters.</p>
+
+    <p><strong>Option 3: YOLO Mode</strong></p>
+
+<pre><span class="cmd">claude --dangerously-skip-permissions</span></pre>
+
+    <p>Does what it sounds like. No permission prompts at all. Use this only in throwaway environments (Docker containers, CI/CD, experiments you don't care about). Not recommended for your real projects.</p>
+
+    <div class="aside">
+      <strong>My setup:</strong> I use <code>Shift+Tab</code> auto-accept for most work, with an allowlist for git and npm. Fast enough to stay in flow, safe enough to sleep at night.
+    </div>
+
     <!-- WRAP UP -->
     <h2>You're set.</h2>
 
